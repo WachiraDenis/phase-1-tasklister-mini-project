@@ -1,38 +1,28 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Select the form
-  const form = document.getElementById("create-task-form");
+  /
+const form = document.getElementById("create-task-form");
 
-  // Add event listener to the form
-  form.addEventListener("submit", (event) => {
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
 
-    // Prevent page from refreshing
-    event.preventDefault();
+  const taskInput = document.getElementById("new-task-description");
+  const task = taskInput.value;
 
-    // Get the task entered by the user
-    const task = document.getElementById("new-task-description").value;
+  buildToDo(task);
 
-    // Call buildToDo function
-    buildToDo(task);
+});
 
-  });
+function buildToDo(task) {
+  const li = document.createElement("li");
 
-  // Create a function to build the task
-  function buildToDo(task) {
+  li.textContent = task;
 
-    // Create a new li element
-    const li = document.createElement("li");
+  const taskList = document.getElementById("tasks");
 
-    // Add the task as text
-    li.textContent = task;
+  taskList.appendChild(li);
+}
 
-    // Select the task list
-    const taskList = document.getElementById("tasks");
-
-    // Append the new task to the list
-    taskList.appendChild(li);
-
-  }
 
 });
