@@ -1,20 +1,21 @@
+const form = document.getElementById("create-task-form");
+const input = document.getElementById("new-task-description");
+const tasks = document.getElementById("tasks");
 
-require('datejs');
+// Listen for form submission
+form.addEventListener("submit", function (event) {
+  // Stop the page from refreshing
+  event.preventDefault();
 
-function combineUsers(...arrays) {
-  const users = arrays.flat();
+  // Create a new list item
+  const li = document.createElement("li");
 
-  const merge_date = Date.today().toString("M/d/yyyy");
+  // Get the user's input
+  li.textContent = input.value;
 
-  return {
-    users,
-    merge_date
-  };
-}
+  // Add the task to the list
+  tasks.appendChild(li);
 
-module.exports = {
-  combineUsers
-};
-module.exports = {
-  ...(typeof combineUsers !== 'undefined' && { combineUsers })
-};
+  // Clear the input
+  input.value = "";
+});
