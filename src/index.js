@@ -22,3 +22,8 @@ form.addEventListener("submit", function(event) {
   input.value = "";
 
 });
+const {
+    capitalizeWords,
+    filterActiveUsers,
+    logAction
+} = require('../index');
