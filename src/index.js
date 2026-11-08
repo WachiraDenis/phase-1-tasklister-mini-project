@@ -1,47 +1,24 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+const form = document.getElementById("create-task-form");
+const input = document.getElementById("new-task-description");
+const tasks = document.getElementById("tasks");
 
-  // 1. Select the form
-  const form = document.getElementById("create-task-form");
+// Listen for form submission
+form.addEventListener("submit", function(event) {
 
-  // 2. Listen for form submission
-  form.addEventListener("submit", function(event) {
+  // Stop the page from refreshing
+  event.preventDefault();
 
-    // 3. Prevent the default page refresh
-    event.preventDefault();
+  // Create a new list item
+  const li = document.createElement("li");
 
-    // 4. Get the task entered by the user
-    const taskInput = document.getElementById("new-task-description");
-    const task = taskInput.value.trim();
+  // Get the user's input
+  li.textContent = input.value;
 
-    // 5. Check that the input is not empty
-    if (task === "") {
-      return;
-    }
+  // Add the task to the list
+  tasks.appendChild(li);
 
-    // 6. Build and display the task
-    buildToDo(task);
-
-    // 7. Clear the input field
-    taskInput.value = "";
-
-  });
-
-  // Function to create and display a task
-  function buildToDo(task) {
-
-    // Create a new list item
-    const li = document.createElement("li");
-
-    // Add the task description
-    li.textContent = task;
-
-    // Select the task list
-    const taskList = document.getElementById("tasks");
-
-    // Append the new task to the list
-    taskList.appendChild(li);
-
-  }
+  // Clear the input
+  input.value = "";
 
 });
