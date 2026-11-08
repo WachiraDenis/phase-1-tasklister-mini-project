@@ -15,3 +15,6 @@ function combineUsers(...arrays) {
 module.exports = {
   combineUsers
 };
+module.exports = {
+  ...(typeof combineUsers !== 'undefined' && { combineUsers })
+};
