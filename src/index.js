@@ -1,29 +1,17 @@
 
-const form = document.getElementById("create-task-form");
-const input = document.getElementById("new-task-description");
-const tasks = document.getElementById("tasks");
+require('datejs');
 
-// Listen for form submission
-form.addEventListener("submit", function(event) {
+function combineUsers(...arrays) {
+  const users = arrays.flat();
 
-  // Stop the page from refreshing
-  event.preventDefault();
+  const merge_date = Date.today().toString("M/d/yyyy");
 
-  // Create a new list item
-  const li = document.createElement("li");
+  return {
+    users,
+    merge_date
+  };
+}
 
-  // Get the user's input
-  li.textContent = input.value;
-
-  // Add the task to the list
-  tasks.appendChild(li);
-
-  // Clear the input
-  input.value = "";
-
-});
-const {
-    capitalizeWords,
-    filterActiveUsers,
-    logAction
-} = require('../index');
+module.exports = {
+  combineUsers
+};
